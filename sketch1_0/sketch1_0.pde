@@ -13,7 +13,7 @@ void draw() {
   endCamera();
 }
 void setup() {
-  size(720, 400,P3D);
+  fullScreen(P3D);
   x = width/2;
   y = height/2;
   z = 0;
