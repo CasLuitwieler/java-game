@@ -1,9 +1,11 @@
 float x,y,z,xm;
 float t1,t2;
 PImage img;
+PImage grass;
 void setup() {
-  fullScreen(P2D);
+  size(1200,720, P2D);
   img = loadImage("181366.jpg");
+  grass = loadImage("grass.jpg");
   x = width/2;
   y = height/2;
   z = 0;
@@ -13,19 +15,20 @@ void draw() {
   background(0);
   beginShape();
   texture(img);
-  vertex(0, 0, 0, 0);
-  vertex(0, 2160/2, 0, 2160);
-  vertex(3840/2, 2160/2, 3840,2160);
-  vertex(3840/2, 0, 3840, 0);
+  vertex(-200, -200, 0, 0);
+  vertex(-200, height+200, 0, 2160);
+  vertex(width+200, height+200, 3840,2160);
+  vertex(width+200, -200, 3840, 0);
   translate((mouseX-x)/5,(mouseY-y)/5);
   endShape();
   
   
   beginShape();
-  vertex(0, 0);
-  vertex(0, height/2);
-  vertex(width/2, height/2);
-  vertex(width/2, 0);
+  texture(grass);
+  vertex(-500, height-100,0,0);
+  vertex(-500, height+300,0,512);
+  vertex(width+500, height+300,512,512);
+  vertex(width+500, height-100,512,0);
   translate((mouseX-x)/2.5,(mouseY-y)/2.5);
   endShape();
   
