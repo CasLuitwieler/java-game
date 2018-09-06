@@ -27,7 +27,7 @@ void draw() {
   vertex(-200, height+200, 0, 2160);
   vertex(width+200, height+200, 3840,2160);
   vertex(width+200, -200, 3840, 0);
-  translate(xm/10,0);
+  translate(xm/10+(mouseX-x)/10,(mouseY-y)/10);
   endShape();
   
   
@@ -37,7 +37,7 @@ void draw() {
   vertex(-width*2, height*1.3,0,512);
   vertex(width*2, height*1.3,1024,512);
   vertex(width*2, height-100,1024,0);
-  translate(xm,0);
+  translate(xm+(mouseX-x)/5,(mouseY-y)/5);
   endShape();
   
   beginShape();
