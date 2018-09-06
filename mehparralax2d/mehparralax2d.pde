@@ -16,7 +16,7 @@ void setup() {
 void draw() {
   if(isRight)xm -= 10;
   if(isLeft)xm += 10;
-  if(isUp){j -= 100;}
+  if(isUp){j -= 30;}
   if(j != height-150) {
     j +=10;
   }
@@ -27,9 +27,8 @@ void draw() {
   vertex(-200, height+200, 0, 2160);
   vertex(width+200, height+200, 3840,2160);
   vertex(width+200, -200, 3840, 0);
-  translate(xm/10+(mouseX-x)/10,(mouseY-y)/10);
+  translate(xm/10+(mouseX-x)/10,0);
   endShape();
-  
   
   beginShape();
   texture(grass);
@@ -37,18 +36,19 @@ void draw() {
   vertex(-width*2, height*1.3,0,512);
   vertex(width*2, height*1.3,1024,512);
   vertex(width*2, height-100,1024,0);
-  translate(xm+(mouseX-x)/5,(mouseY-y)/5);
+  translate(xm+(mouseX-x)/5,0);
   endShape();
   
   beginShape();
-  rect(-xm*1.2,j,50,50);
+  rect(-xm*1.1,j,50,50);
   endShape();
+  print(j, " ");
 }
 
 
 
 
-/*
+
 void mouseWheel(MouseEvent event) {
   float e = event.getCount();
   if (e > 0) {
@@ -60,4 +60,3 @@ void mouseWheel(MouseEvent event) {
     print(z, " ");
   }
 }
-*/
