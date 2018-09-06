@@ -1,4 +1,4 @@
-float x,y,z,xm;
+float x,y,z,xm,j,j2;
 float t1,t2;
 PImage img;
 PImage grass;
@@ -10,15 +10,15 @@ void setup() {
   y = height/2;
   z = 0;
   xm = 0;
+  j = height/2;
+  j2 = 0;
 }
 void draw() {
-  if (keyPressed) {
-    if (keyCode == RIGHT) {
-      xm -= 10;
-    }
-    if (keyCode == LEFT) {
-      xm += 10;
-    }
+  if(isRight)xm -= 10;
+  if(isLeft)xm += 10;
+  if(isUp){j -= 100;}
+  if(j != height-150) {
+    j +=10;
   }
   background(0);
   beginShape();
@@ -27,7 +27,7 @@ void draw() {
   vertex(-200, height+200, 0, 2160);
   vertex(width+200, height+200, 3840,2160);
   vertex(width+200, -200, 3840, 0);
-  translate(xm/10,(mouseY-y)/5);
+  translate(xm/10,0);
   endShape();
   
   
@@ -37,9 +37,12 @@ void draw() {
   vertex(-width*2, height*1.3,0,512);
   vertex(width*2, height*1.3,1024,512);
   vertex(width*2, height-100,1024,0);
-  translate(xm,(mouseY-y)/2.5);
+  translate(xm,0);
   endShape();
   
+  beginShape();
+  rect(-xm*1.2,j,50,50);
+  endShape();
 }
 
 
