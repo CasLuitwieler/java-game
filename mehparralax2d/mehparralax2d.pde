@@ -1,7 +1,8 @@
-float x,y,z,xm,j,j2;
+float x,y,z,xm,j,j2,s;
 float t1,t2;
 PImage img;
 PImage grass;
+boolean jump = true;
 void setup() {
   fullScreen(P2D, 2);
   img = loadImage("181366.jpg");
@@ -9,17 +10,25 @@ void setup() {
   x = width/2;
   y = height/2;
   z = 0;
-  xm = 0;
+  xm = x;
   j = height/2;
   j2 = 0;
+  s = 50;
 }
 void draw() {
   if(isRight)xm -= 10;
   if(isLeft)xm += 10;
-  if(isUp){j -= 30;}
-  if(j != height-150) {
-    j +=10;
+  if(isUp && jump){
+    j -= 100;
+    j2 = 0;
+    jump = false;
   }
+  if(j < height-100) {
+    j2 += 0.5;
+    s += 0.2;
+    j +=j2;
+  }
+  else{j2 = 0; j = height-100; s = lerp(s,50,0.7);}
   background(0);
   beginShape();
   texture(img);
@@ -40,9 +49,8 @@ void draw() {
   endShape();
   
   beginShape();
-  rect(-xm*1.1,j,50,50);
+  rect((-xm*1.1)+500,j,50,-s);
   endShape();
-  print(j, " ");
 }
 
 

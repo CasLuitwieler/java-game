@@ -32,7 +32,7 @@ void draw() {
     }
   }
   rect(x,y,50,50);
-  createEnemy();
+  /*createEnemy();
   shape(square, 0,0);
   if(arr < 49){
     arr++;
@@ -40,4 +40,5 @@ void draw() {
   else {
     arr = 0; 
   }
+  */
 }
