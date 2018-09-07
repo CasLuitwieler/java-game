@@ -19,13 +19,13 @@ void draw() {
   if(isRight)xm -= 10;
   if(isLeft)xm += 10;
   if(isUp && jump){
-    j -= 100;
+    j -= 500;
     j2 = 0;
     jump = false;
   }
   if(j < height-100) {
     j2 += 0.5;
-    s += 0.2;
+    s += 0.3;
     j +=j2;
   }
   else{j2 = 0; j = height-100; s = lerp(s,50,0.7);}
