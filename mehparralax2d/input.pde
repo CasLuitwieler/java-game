@@ -10,7 +10,7 @@ void keyReleased() {
 boolean setMove(int k, boolean b) {
   switch (k) {
   case UP:
-    if(!b)jump = true;
+    //if(!b)jump = true;
     return isUp = b;
  
   case DOWN:

@@ -1,23 +1,37 @@
-float midX,midY,px,py,pw,ph;
+float midX,midY,px,py,pxv,pyv,pw,ph,hue;
 Enemy[] enemy;
-int arr;
+int arr, enemies,score;
 boolean jump = true;
 void setup() {
   fullScreen(2);
   midX = width/2;
   midY = height/2;
   playerSetup();
-  enemy = new Enemy[50];
+  enemy = new Enemy[enemies];
+  colorMode(HSB,255,1,1);
 }
 void draw() {
-  if(isRight)px += 10;
-  if(isLeft)px -= 10;
-  if(isUp && jump){
-    jump = false;
-  }
-
+  hue ++;
+  if(hue == 255)hue=0;
+  if(isRight && px < width-pw/2 && !isLeft){if(pxv < 0)pxv=0;pxv += 0.5;px += pxv;}else{if(pxv > 0){pxv--;px += pxv;}if(px > width-pw/2)px = width-pw/2;}
+  if(isLeft && px > 0+pw/2 && !isRight){if(pxv > 0)pxv=0;pxv -= 0.5; px += pxv;}else{if(pxv < 0){pxv++;px += pxv;} if(px < 0+pw/2)px = 0+pw/2;}
+  if(isUp){if(jump){pyv = 20; py -= pyv;}else{if(py < height-ph){py -= pyv; pyv -= 0.5;}} if(pyv >= 20 || pyv < 0){jump = false;}}else{if(pyv == 0){jump = true;}else{jump=false;}if(py < height-ph){py -= pyv; pyv -= 0.5;}else{pyv = 0;}}
   background(0);
+  textSize(50);
+  fill(255);
+  text(score,midX,midY);
+  fill(hue,1,1);
+  rectMode(CENTER);
   rect(px,py,pw,ph);
-  enemy[arr] = new Enemy();
-  arr++;
+
+  if (arr < enemies){
+    enemy[arr] = new Enemy();
+    arr++;
+  }
+  else {
+  for(int i = 0; i <= enemy.length -1 ; i++){
+    enemy[i].display();
+    enemy[i].update(random(0,width),random(0,height));
+  }
+  }
 }
