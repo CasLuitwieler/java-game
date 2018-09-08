@@ -2,7 +2,7 @@ class Enemy {
  color c;
  float hue, xpos, ypos;
  int count;
- boolean hit;
+
  Enemy() {
    colorMode(HSB,255,1,1);
    hue = 0;
@@ -19,16 +19,18 @@ class Enemy {
    rectMode(CENTER);
    fill(c);
  }
- void update(float tempX,float tempY){
-   if(xpos-10 <= px+25 && xpos+10 >= px-25 && ypos+10 >= py-25 && ypos-10 <= py+25){hit = true;score++;background(10);}
-   else{rect(xpos,ypos,20,20);}
-   if(count == 500 || hit){
+ boolean update(float tempX,float tempY, int i){
+   if(xpos-10 <= px+25 && xpos+10 >= px-25 && ypos+10 >= py-25 && ypos-10 <= py+25){hit = true;rect(xpos,ypos,20,20);}
+   else{rect(xpos,ypos,20,20);hit = false;}
+   println(hit," ",i);
+   if(count == 500){
      xpos = tempX;
      ypos = tempY;
      count = 0;
      hit = false;
      }
    else{count++;}
+   return hit;
  }
   
   
