@@ -20,9 +20,9 @@ class Enemy {
    fill(c);
  }
  boolean update(float tempX,float tempY, int i){
-   if(xpos-10 <= px+25 && xpos+10 >= px-25 && ypos+10 >= py-25 && ypos-10 <= py+25){hit = true;rect(xpos,ypos,20,20);}
-   else{rect(xpos,ypos,20,20);hit = false;}
-   println(hit," ",i);
+   if(xpos-20 <= px+25 && xpos+20 >= px-25 && ypos+20 >= py-25 && ypos-20 <= py+25){hit = true;rect(xpos,ypos,40,40);}
+   else{rect(xpos,ypos,40,40);hit = false;}
+   //println(hit," ",i);
    if(count == 500){
      xpos = tempX;
      ypos = tempY;

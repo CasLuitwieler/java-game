@@ -6,7 +6,10 @@ void keyPressed() {
 void keyReleased() {
   setMove(keyCode, false);
 }
- 
+
+void keyInput() {
+  
+}
 boolean setMove(int k, boolean b) {
   switch (k) {
   case UP:
