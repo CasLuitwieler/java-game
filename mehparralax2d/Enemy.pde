@@ -1,7 +1,7 @@
 class Enemy {
  color c;
- float hue, xpos, ypos;
- int count;
+ float hue, xpos, ypos, enemyW,enemyH;
+ int count,hitSide;
 
  Enemy() {
    colorMode(HSB,255,1,1);
@@ -9,7 +9,8 @@ class Enemy {
    c = color(hue,1,1);
    xpos = random(0,width);
    ypos = random(0,height);
-   
+   enemyW = 100;
+   enemyH = 40;
    println(xpos, " ",ypos);
  }
  void display() {
@@ -20,8 +21,8 @@ class Enemy {
    fill(c);
  }
  boolean update(float tempX,float tempY, int i){
-   if(xpos-20 <= px+25 && xpos+20 >= px-25 && ypos+20 >= py+25 && ypos-20 <= py+25){hit = true;rect(xpos,ypos,40,40);}
-   else{rect(xpos,ypos,40,40);hit = false;}
+   if(xpos-enemyW/2 <= px+25 && xpos+enemyW/2 >= px-25 && ypos+enemyH/2 >= py-25 && ypos-enemyH/2 <= py+25){hit = true;rect(xpos,ypos,enemyW,enemyH); py = ypos-enemyH;}
+   else{rect(xpos,ypos,enemyW,enemyH);hit = false;}
    //println(hit," ",i);
    if(count == 1000){
      xpos = tempX;
@@ -32,6 +33,5 @@ class Enemy {
    else{count++;}
    return hit;
  }
-  
   
 }

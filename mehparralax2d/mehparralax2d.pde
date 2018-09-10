@@ -28,11 +28,9 @@ void draw() {
   for(int i = 0; i < enemy.length;i++){
     if(!hit2[i]){
       if(hitarr == enemy.length-1){
-         println("Not hitting anything");
          hit = false;
          hitarr = 0;
       }
-      println("Added hitarr");
       hitarr++;
     }
     else {hitarr = 0;hit = true;pyv = 0;}

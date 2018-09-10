@@ -14,7 +14,7 @@ void playerInput() {
     if(px > width-pw/2)px = width-pw/2;
   }
   //-------------------------------------
-  if(isLeft && px > 0+pw/2 && !isRight){
+  if(isLeft && px > 0+pw/2 && !isRight ){
     if(pxv > 0)pxv=0;
     pxv -= 0.5;
     px += pxv;
