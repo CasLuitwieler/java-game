@@ -1,7 +1,6 @@
 float midX,midY,px,py,pxv,pyv,pw,ph,hue;
 Enemy[] enemy;
-int arr, enemies,score,i;
-int[] hitarr;
+int arr, enemies,score,i,hitarr;
 boolean jump = true, hit;
 boolean[] hit2;
 void setup() {
@@ -11,7 +10,6 @@ void setup() {
   playerSetup();
   enemy = new Enemy[enemies];
   hit2 = new boolean[enemies];
-  hitarr = new int[enemies];
   colorMode(HSB,255,1,1);
 }
 void draw() {
@@ -27,10 +25,20 @@ void draw() {
     enemy[i].display();
     hit2[i] = enemy[i].update(random(0,width),random(0,height), i);
   }
-  if(isRight && px < width-pw/2 && !isLeft){if(pxv < 0)pxv=0;pxv += 0.5;px += pxv;}else{if(pxv > 0){pxv--;px += pxv;}if(px > width-pw/2)px = width-pw/2;}
-  if(isLeft && px > 0+pw/2 && !isRight){if(pxv > 0)pxv=0;pxv -= 0.5; px += pxv;}else{if(pxv < 0){pxv++;px += pxv;} if(px < 0+pw/2)px = 0+pw/2;}
-  if(isUp) {if(jump){pyv = 20; py -= pyv;}else{if(py < height-ph){py -= pyv; pyv -= 0.5;i = enemy.length -1;}} if(pyv >= 20 || pyv < 0){jump = false;}}else{if(pyv == 0){jump = true;}else{jump=false;}if(py < height-ph){py -= pyv; pyv -= 0.5;}else{pyv = 0;}} 
-  println(py);
+  for(int i = 0; i < enemy.length;i++){
+    if(!hit2[i]){
+      if(hitarr == enemy.length-1){
+         println("Not hitting anything");
+         hit = false;
+         hitarr = 0;
+      }
+      println("Added hitarr");
+      hitarr++;
+    }
+    else {hitarr = 0;hit = true;pyv = 0;}
+  }
+  playerInput(); 
+
   textSize(50);
   fill(255);
   text(score,midX,midY);
