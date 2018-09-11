@@ -3,6 +3,6 @@ void playerSetup() {
   py = midY;
   pw = 50;
   ph = 50;
-  enemies = 10;
+  enemies = 20;
   score = 0;
 }

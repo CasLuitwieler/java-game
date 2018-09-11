@@ -1,4 +1,5 @@
-boolean isUp,isDown,isLeft,isRight;
+boolean isUp,isDown,isLeft,isRight,isSpace;
+String lastPressed;
 
 void playerInput() {
   if(isRight && px < width-pw/2 && !isLeft){
@@ -57,7 +58,10 @@ void playerInput() {
     else {
       pyv = 0;
     }
-  } 
+  }
+  if(isSpace){
+    
+  }
 }
 void keyPressed() {
   setMove(keyCode, true);
@@ -71,17 +75,23 @@ boolean setMove(int k, boolean b) {
   switch (k) {
   case UP:
     //if(!b)jump = true;
+    lastPressed = "Up";
     return isUp = b;
  
   case DOWN:
+    lastPressed = "Down";
     return isDown = b;
  
   case LEFT:
+    lastPressed = "Left";
     return isLeft = b;
  
   case RIGHT:
+    lastPressed = "Right";
     return isRight = b;
- 
+  case 32:
+    lastPressed = "Space";
+    return isSpace = b;
   default:
     return b;
   }
