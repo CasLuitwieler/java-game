@@ -1,4 +1,4 @@
-float midX,midY,px,py,pxv,pyv,pw,ph,hue;
+float midX,midY,px,py,pxv,pyv,pw,ph,hue,rad;
 Enemy[] enemy;
 int arr, enemies,score,i,hitarr;
 boolean jump = true, hit;
@@ -23,7 +23,7 @@ void draw() {
   else {
   for(int i = 0; i <= enemy.length -1 ; i++){
     enemy[i].display();
-    hit2[i] = enemy[i].update(random(0,width),random(0,height), i);
+    hit2[i] = enemy[i].update(random(0,width),random(0,height));
   }
   for(int i = 0; i < enemy.length;i++){
     if(!hit2[i]){
@@ -43,8 +43,6 @@ void draw() {
   fill(hue,1,1);
   rectMode(CENTER);
   rect(px,py,pw,ph);
-
-
   }
 
 }

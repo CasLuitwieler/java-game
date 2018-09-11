@@ -11,7 +11,6 @@ class Enemy {
    ypos = random(0,height);
    enemyW = 100;
    enemyH = 40;
-   println(xpos, " ",ypos);
  }
  void display() {
    c = color(hue,1,1);
@@ -20,11 +19,11 @@ class Enemy {
    rectMode(CENTER);
    fill(c);
  }
- boolean update(float tempX,float tempY, int i){
+ boolean update(float tempX,float tempY){
    if(xpos-enemyW/2 <= px+25 && xpos+enemyW/2 >= px-25 && ypos+enemyH/2 >= py-25 && ypos-enemyH/2 <= py+25){hit = true;rect(xpos,ypos,enemyW,enemyH); py = ypos-enemyH;}
    else{rect(xpos,ypos,enemyW,enemyH);hit = false;}
    //println(hit," ",i);
-   if(count == 1000){
+   if(count == 100){
      xpos = tempX;
      ypos = tempY;
      count = 0;
