@@ -20,7 +20,7 @@ class Enemy {
    fill(c);
  }
  boolean update(float tempX,float tempY){
-   if(xpos-enemyW/2 <= px+25 && xpos+enemyW/2 >= px-25 && ypos+enemyH/2 >= py-25 && ypos-enemyH/2 <= py+25){hit = true;rect(xpos,ypos,enemyW,enemyH); py = ypos-enemyH;}
+   if(xpos-enemyW/2 <= px+25 && xpos+enemyW/2 >= px-25 && ypos+enemyH/2 >= py-25 && ypos-enemyH/2 <= py+25){hit = true;rect(xpos,ypos,enemyW,enemyH); py = ypos-enemyH-5;}
    else{rect(xpos,ypos,enemyW,enemyH);hit = false;}
    //println(hit," ",i);
    if(count == 1000){
