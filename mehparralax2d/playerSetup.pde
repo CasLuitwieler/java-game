@@ -5,4 +5,5 @@ void playerSetup() {
   ph = 50;
   enemies = 20;
   score = 0;
+  maxBullets = 100;
 }

@@ -1,5 +1,5 @@
 boolean isUp,isDown,isLeft,isRight,isSpace;
-String lastPressed;
+String lastPressed = "Up";
 
 void playerInput() {
   if(isRight && px < width-pw/2 && !isLeft){
@@ -90,7 +90,6 @@ boolean setMove(int k, boolean b) {
     lastPressed = "Right";
     return isRight = b;
   case 32:
-    lastPressed = "Space";
     return isSpace = b;
   default:
     return b;

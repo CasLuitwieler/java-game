@@ -1,6 +1,8 @@
 float midX,midY,px,py,pxv,pyv,pw,ph,hue,rad;
 Enemy[] enemy;
-int arr, enemies,score,i,hitarr;
+Bullet[]  bullet;
+String[] bulletpos;
+int arr, enemies,score,i,hitarr,maxBullets,bulletT;
 boolean jump = true, hit;
 boolean[] hit2;
 void setup() {
@@ -10,9 +12,12 @@ void setup() {
   playerSetup();
   enemy = new Enemy[enemies];
   hit2 = new boolean[enemies];
+  bullet = new Bullet[maxBullets];
+  bulletpos = new String[maxBullets];
   colorMode(HSB,255,1,1);
 }
 void draw() {
+  //bullet[i].bulletCreate(midX,midY,10,10);
   background(0);
   hue ++;
   if(hue == 255)hue=0;
@@ -25,6 +30,7 @@ void draw() {
     enemy[i].display();
     hit2[i] = enemy[i].update(random(0,width),random(0,height));
   }
+
   for(int i = 0; i < enemy.length;i++){
     if(!hit2[i]){
       if(hitarr == enemy.length-1){
@@ -36,7 +42,10 @@ void draw() {
     else {hitarr = 0;hit = true;pyv = 0;}
   }
   playerInput(); 
-
+  if(bulletT == 10){
+  fireBullet(lastPressed,px,py,pw,ph);
+  }
+  else bulletT++;
   textSize(50);
   fill(255);
   text(score,midX,midY);
