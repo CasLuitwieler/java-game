@@ -72,26 +72,28 @@ void keyReleased() {
 }
 
 boolean setMove(int k, boolean b) {
-  switch (k) {
-  case UP:
+
+  if(k == UP){
     //if(!b)jump = true;
     lastPressed = "Up";
     return isUp = b;
- 
-  case DOWN:
+  }
+  if(k == DOWN){
     lastPressed = "Down";
     return isDown = b;
- 
-  case LEFT:
+  }
+  if(k == LEFT){
     lastPressed = "Left";
     return isLeft = b;
- 
-  case RIGHT:
+  }
+  if(k == RIGHT){
     lastPressed = "Right";
     return isRight = b;
-  case 32:
-    return isSpace = b;
-  default:
-    return b;
   }
+  if(k == 32){
+    return isSpace = b;
+  }
+
+  return b;
+  
 }

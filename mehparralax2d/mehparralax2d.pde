@@ -30,6 +30,13 @@ void draw() {
     enemy[i].display();
     hit2[i] = enemy[i].update(random(0,width),random(0,height));
   }
+  for(int i = 0; i <= bullet.length -1 ; i++){
+    if(bullet[i] != null){
+      bullet[i].bulletUpdate();
+      println(i);
+    }
+   // else println("Null");
+  }
 
   for(int i = 0; i < enemy.length;i++){
     if(!hit2[i]){
@@ -42,7 +49,7 @@ void draw() {
     else {hitarr = 0;hit = true;pyv = 0;}
   }
   playerInput(); 
-  if(bulletT == 10){
+  if(bulletT == 15){
   fireBullet(lastPressed,px,py,pw,ph);
   }
   else bulletT++;
