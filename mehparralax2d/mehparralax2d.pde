@@ -2,7 +2,7 @@ float midX,midY,px,py,pxv,pyv,pw,ph,hue,rad;
 Enemy[] enemy;
 Bullet[]  bullet;
 String[] bulletpos;
-int arr, enemies,score,i,hitarr,maxBullets,bulletT;
+int arr, enemies,score,i,hitarr,maxBullets,bulletT,bulletArr;
 boolean jump = true, hit;
 boolean[] hit2;
 void setup() {
@@ -21,7 +21,7 @@ void draw() {
   background(0);
   hue ++;
   if(hue == 255)hue=0;
-    if (arr < enemies){
+  if (arr < enemies){
     enemy[arr] = new Enemy();
     arr++;
   }
