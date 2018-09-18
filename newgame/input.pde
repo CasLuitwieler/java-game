@@ -1,4 +1,4 @@
-boolean isUp,isDown,isLeft,isRight;
+boolean isUp,isDown,isLeft,isRight,isSpace,isEnter,enter;
 void keyPressed() {
   setMove(keyCode, true);
 }
@@ -20,7 +20,11 @@ boolean setMove(int k, boolean b) {
  
   case RIGHT:
     return isRight = b;
- 
+  case 32:
+    return isSpace = b;
+  case ENTER:
+    if(b)enter=!enter;
+    return isEnter = b;
   default:
     return b;
   }

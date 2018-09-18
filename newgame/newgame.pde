@@ -1,40 +1,29 @@
-float x,y,r;
+import processing.sound.*;
+
+float x,y,w,h,r,turnSpeed,moveSpeed,gameSpeed;
+int bulletArr,maxBullets,bulletT;
+
+Bullet[] bullet;
+PImage img;
+
+SoundFile file;
+
 void setup() {
-  fullScreen(); 
-  smooth();
-  x = width/2;
-  y = height/2;
-  r = 0;
+  playerSetup();
 }
 
 void draw() {
   background(0);
-  if(isRight){
-    if(x < width-50){
-      r+=0.05;
+  image(img,0,0,width,height);
+  updateMovement();
+  for(int i = 0; i <= bullet.length -1; i++){
+    if(bullet[i] != null){
+      bullet[i].bulletUpdate();
     }
   }
-  if(isLeft){
-    if(x > 0){
-      r-=0.05;
-    }
+  if(bulletT >= (5/gameSpeed)){
+  fireBullet();
   }
-  if(isUp){
-    if(y >= 25){
-      x += cos(r)*4;
-      y += sin(r)*4;
-    }
-  }
-  if(isDown){
-    if(y <= height-25){
-      x -= cos(r)*4;
-      y -= sin(r)*4;
-    }
-  }
-  pushMatrix();
-  rectMode(CENTER);
-  translate(x,y);
-  rotate(r);
-  rect(0,0,50,50);
-  popMatrix();
+  else bulletT++;
+  updatePlayer();
 }
