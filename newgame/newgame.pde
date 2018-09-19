@@ -2,7 +2,7 @@ import processing.sound.*;
 
 float x,y,w,h,r,turnSpeed,moveSpeed,gameSpeed;
 int bulletArr,maxBullets,bulletT;
-
+boolean movement;
 Bullet[] bullet;
 PImage img;
 
