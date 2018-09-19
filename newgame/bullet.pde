@@ -6,6 +6,10 @@ void fireBullet(){
      bulletT = 0;
      file.rate(gameSpeed);
      file.play();
+     //if(isUp){
+       x += cos(r)*(3*gameSpeed);
+       y += sin(r)*(3*gameSpeed);
+    // }
     }
     else bulletArr = 0;
   } 

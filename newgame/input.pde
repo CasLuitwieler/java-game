@@ -26,7 +26,7 @@ boolean setMove(int k, boolean b) {
     return isSpace = b;
     
   case ENTER:
-    if(b)enter=!enter;
+    if(b){enter=!enter;}
     return isEnter = b;
     
   default:

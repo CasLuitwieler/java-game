@@ -4,6 +4,7 @@ void updatePlayer(){
   translate(x,y);
   rotate(r);
   rect(0,0,w,h);
+  rect(30,0,10,10);
   popMatrix(); 
 }
 void updateMovement() {
