@@ -1,6 +1,4 @@
 void playerSetup(){
-  fullScreen(P2D,2); 
-  smooth();
   rectMode(CENTER);
   x = width/2;
   y = height/2;

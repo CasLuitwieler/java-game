@@ -9,6 +9,8 @@ PImage img;
 SoundFile file;
 
 void setup() {
+  fullScreen(P2D,2); 
+  smooth();
   playerSetup();
 }
 

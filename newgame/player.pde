@@ -19,14 +19,14 @@ void updateMovement() {
   }
   if(isUp){
     if(y >= 25){
-      x += cos(r)*(4*gameSpeed);
-      y += sin(r)*(4*gameSpeed);
+      x += cos(r)*(moveSpeed*gameSpeed);
+      y += sin(r)*(moveSpeed*gameSpeed);
     }
   }
   if(isDown){
     if(y <= height-25){
-      x -= cos(r)*moveSpeed;
-      y -= sin(r)*moveSpeed;
+      x -= cos(r)*(moveSpeed*gameSpeed);
+      y -= sin(r)*(moveSpeed*gameSpeed);
     }
   }
   if(enter){
