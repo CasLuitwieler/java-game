@@ -6,6 +6,12 @@ void keyPressed() {
 void keyReleased() {
   setMove(keyCode, false);
 }
+
+void mouseClicked(){
+  if(mouseX >= width/2-100 && mouseX <= width/2+100 && mouseY >= height/5-25 && mouseY <= height/5+25){
+    menu = false;
+  }
+}
  
 boolean setMove(int k, boolean b) {
   switch (k) {
