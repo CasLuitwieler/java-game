@@ -1,7 +1,6 @@
 boolean isUp,isDown,isLeft,isRight,isSpace,isEnter,enter;
 void keyPressed() {
   setMove(keyCode, true);
-  println(keyCode);
 }
  
 void keyReleased() {

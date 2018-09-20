@@ -20,7 +20,6 @@ void updateMovement() {
       x += cos(r)*(moveSpeed*gameSpeed);
       y += sin(r)*(moveSpeed*gameSpeed);
       moveSpeed+=0.05*gameSpeed;
-      println(moveSpeed);
       movement = true;
     //}
   }
@@ -51,5 +50,10 @@ void updateMovement() {
       gameSpeed = 0.25;
   }
   else{ gameSpeed = 1;}
+
+  if(x<=0+w/2){x = 0+w/2;moveSpeed = 4;}
+  if(x>=width-w/2){x = width-w/2;moveSpeed = 4;}
+  if(y<=0+h/2){y = 0+w/2;moveSpeed = 4;}
+  if(y>=height-h/2){y = height-w/2;moveSpeed = 4;}
 
 }

@@ -5,8 +5,8 @@ class Enemy {
   Enemy() {
    xpos = random(0,width);
    ypos = random(0,height);
-   speed = random(2,4);
-   delay = random(0,1000);
+   speed = random(1,3);
+   delay = random(0,2500);
    alive = true;
   }
   
@@ -31,6 +31,7 @@ class Enemy {
       if(bullet[i] != null && delay <= 0){
         if(xpos < bullet[i].bx+bullet[i].bw/2 && xpos > bullet[i].bx-bullet[i].bw/2){
           if(ypos < bullet[i].by+bullet[i].bh/2 && ypos > bullet[i].by-bullet[i].bh/2){
+            bullet[i] = null;
             alive = false;
             points++;
           }

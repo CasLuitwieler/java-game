@@ -4,8 +4,6 @@ void fireBullet(){
      bullet[bulletArr] = new Bullet(x,y,w/2,h/2,r);
      bulletArr++;
      bulletT = 0;
-     file.rate(gameSpeed);
-     file.play();
      //if(isUp){
        x += cos(r)*(3*gameSpeed);
        y += sin(r)*(3*gameSpeed);

@@ -17,6 +17,4 @@ void playerSetup(){
   bullet = new Bullet[maxBullets];
   enemy = new Enemy[maxEnemies];
   img = loadImage("maxresdefault.jpg");
-  file = new SoundFile(this, "glock.mp3");
-  file.amp(0.2);
 }

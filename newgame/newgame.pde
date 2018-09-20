@@ -1,5 +1,3 @@
-import processing.sound.*;
-
 float x,y,w,h,r,turnSpeed,moveSpeed,gameSpeed;
 int bulletArr,maxBullets,maxEnemies,bulletT,arr,points;
 boolean movement;
@@ -9,7 +7,6 @@ Enemy[] enemy;
 
 PImage img;
 
-SoundFile file;
 
 void setup() {
   fullScreen(P2D,2); 
@@ -34,13 +31,13 @@ void draw() {
       }
     }
   }
-  updateMovement();
+  updateMovement(); //<>//
   for(int i = 0; i <= bullet.length -1; i++){
     if(bullet[i] != null){
       bullet[i].bulletUpdate();
     }
   }
-  if(bulletT >= (5/gameSpeed)){
+  if(bulletT >= (15/gameSpeed)){
   fireBullet();
   }
   else bulletT++;
