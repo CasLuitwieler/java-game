@@ -11,6 +11,7 @@ PImage img,logo;
 void setup() {
   fullScreen(P2D,2); 
   smooth();
+  frameRate(60);
   playerSetup();
 }
 
