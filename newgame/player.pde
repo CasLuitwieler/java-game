@@ -9,40 +9,40 @@ void updatePlayer(){
 }
 void updateMovement() {
   if(isRight){
-      r+=(0.05*gameSpeed);
+      r+=(0.05*deltaTime*gameSpeed);
   }
   if(isLeft){
-      r-=(0.05*gameSpeed);
+      r-=(0.05*deltaTime*gameSpeed);
   }
   if(isUp){
     //if(y >= 25){
       if(!movement)moveSpeed =4;
-      x += cos(r)*(moveSpeed*gameSpeed);
-      y += sin(r)*(moveSpeed*gameSpeed);
-      moveSpeed+=0.05*gameSpeed;
+      x += cos(r)*(moveSpeed*deltaTime*gameSpeed);
+      y += sin(r)*(moveSpeed*deltaTime*gameSpeed);
+      moveSpeed+=0.05*deltaTime*gameSpeed;
       movement = true;
     //}
   }
   else {
   if(moveSpeed > 4 && !isDown && movement){
-    x += cos(r)*(moveSpeed*gameSpeed);
-    y += sin(r)*(moveSpeed*gameSpeed);
-    moveSpeed-=0.5*gameSpeed;
+    x += cos(r)*(moveSpeed*deltaTime*gameSpeed);
+    y += sin(r)*(moveSpeed*deltaTime*gameSpeed);
+    moveSpeed-=0.5*deltaTime*gameSpeed;
   }}
   if(isDown){
     //if(y <= height-25){
       if(movement)moveSpeed =4;
-      x -= cos(r)*(moveSpeed*gameSpeed);
-      y -= sin(r)*(moveSpeed*gameSpeed);
-      moveSpeed+=0.05*gameSpeed;
+      x -= cos(r)*(moveSpeed*deltaTime*gameSpeed);
+      y -= sin(r)*(moveSpeed*deltaTime*gameSpeed);
+      moveSpeed+=0.05*deltaTime*gameSpeed;
       movement = false;
     //}
   }
   else{
     if(moveSpeed > 4 && !isUp && !movement){
-      x -= cos(r)*(moveSpeed*gameSpeed);
-      y -= sin(r)*(moveSpeed*gameSpeed);
-      moveSpeed-=0.5*gameSpeed;
+      x -= cos(r)*(moveSpeed*deltaTime*gameSpeed);
+      y -= sin(r)*(moveSpeed*deltaTime*gameSpeed);
+      moveSpeed-=0.5*deltaTime*gameSpeed;
     }
   }
   

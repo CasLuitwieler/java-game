@@ -20,8 +20,8 @@ class Enemy {
         rect(0,0,20,20);
         rect(20,0,10,10);
         popMatrix();
-        xpos += cos(direction)*(speed*gameSpeed);
-        ypos += sin(direction)*(speed*gameSpeed);
+        xpos += cos(direction)*(speed*deltaTime*gameSpeed);
+        ypos += sin(direction)*(speed*deltaTime*gameSpeed);
       }
     }
     else delay-=1*gameSpeed;

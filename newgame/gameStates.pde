@@ -28,7 +28,7 @@ void inGame(){
       bullet[i].bulletUpdate();
     }
   }
-  if(bulletT >= (15/gameSpeed)){
+  if(bulletT >= (15/deltaTime/gameSpeed)){
   fireBullet();
   }
   else bulletT++;
