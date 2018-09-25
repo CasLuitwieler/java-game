@@ -35,7 +35,7 @@ class Player
   void HandleInput()
   {
     if(isTouching && isUp)jumpSpeed = 500f;
-    if(jumpAble && isUp)jumpSpeed = 500f;
+    if(jumpAble && isUp){jumpSpeed = 500f;moveSpeed = 400f;lastDirection = !lastDirection;jumpAble = false;isUp = false;}
     if (isUp && !isDown)
     {
       if(!isLeft || !isRight && moveSpeed > 0)moveSpeed = 0;

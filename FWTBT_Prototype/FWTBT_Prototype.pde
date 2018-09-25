@@ -20,7 +20,7 @@ void setup()
 
 void draw()
 {
-  
+  background(0);
   //------Time------
   deltaTime = (millis() - lastTime) / 1000; //Calculates the diffrence in time between frames
   lastTime = millis();
