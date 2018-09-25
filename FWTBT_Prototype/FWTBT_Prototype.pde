@@ -5,7 +5,7 @@ float lastTime,deltaTime,gameTime; //Global time variables
 
 void setup()
 {
-  size(1280, 720);
+  size(1280, 720,P2D);
   background(0,0,0);
   rectMode(CENTER);
   imageMode(CENTER);

@@ -20,14 +20,13 @@ class Player
     velocity = new PVector(0,0);
     moveSpeed = 300f;
     jumpSpeed = 0;
-    maxSpeed = 800f;
+    maxSpeed = 1000f;
   }
   
   void Update()
   {
     velocity = new PVector(1,1); 
     velocity.normalize();
-    println(moveSpeed);
     HandleInput();
     isTouching = collisionCheck();
   }
@@ -35,10 +34,10 @@ class Player
   void HandleInput()
   {
     if(isTouching && isUp)jumpSpeed = 500f;
-    if(jumpAble && isUp){jumpSpeed = 500f;moveSpeed = 400f;lastDirection = !lastDirection;jumpAble = false;isUp = false;}
+    if(jumpAble && isUp){jumpSpeed = 500f;moveSpeed = moveSpeed*0.8;if(lastDirection)isLeft = false;else isRight = false;lastDirection = !lastDirection;jumpAble = false;isUp = false;}
     if (isUp && !isDown)
     {
-      if(!isLeft || !isRight && moveSpeed > 0)moveSpeed = 0;
+      if(!isLeft && !isRight && moveSpeed > 0){println(isLeft," ",isRight);moveSpeed = 0;}
       velocity.y = velocity.y*(jumpSpeed * deltaTime);
       position.add(0,-velocity.y);
       jumpSpeed-=10;
@@ -51,15 +50,14 @@ class Player
     }
     if (isDown && !isUp)
     {
-      velocity.mult(jumpSpeed * deltaTime);
-      position.add(0,velocity.y);
+      
     }
 
     if (isLeft && !isRight)
     {
       if(!lastDirection)moveSpeed = 300f;
       moveSpeed = constrain(moveSpeed,300f, maxSpeed);
-      velocity.mult(moveSpeed * deltaTime);
+      velocity.x = velocity.x*(moveSpeed * deltaTime);
       position.add(-velocity.x,0);
       moveSpeed+=5;
       lastDirection = true;
@@ -68,7 +66,7 @@ class Player
     {
       if(!isRight && lastDirection){
         if(isTouching && moveSpeed > 300f){
-          velocity.mult(moveSpeed * deltaTime);
+          velocity.x = velocity.x*(moveSpeed * deltaTime);
           position.add(-velocity.x,0);
           moveSpeed-=20;          
         }
@@ -76,7 +74,7 @@ class Player
         {
           if(moveSpeed > 0 && !isTouching)
           {
-            velocity.mult(moveSpeed * deltaTime);
+            velocity.x = velocity.x*(moveSpeed * deltaTime);
             position.add(-velocity.x,0);
             moveSpeed-=4; 
           }
@@ -88,7 +86,7 @@ class Player
     {
       if(lastDirection)moveSpeed = 300f;
       moveSpeed = constrain(moveSpeed,300f, maxSpeed);
-      velocity.mult(moveSpeed * deltaTime);
+      velocity.x = velocity.x*(moveSpeed * deltaTime);
       position.add(velocity.x,0);
       moveSpeed+=5; 
       lastDirection = false;
@@ -97,7 +95,7 @@ class Player
     {
       if(!isLeft && !lastDirection){
         if(isTouching && moveSpeed > 300f){
-          velocity.mult(moveSpeed * deltaTime);
+          velocity.x = velocity.x*(moveSpeed * deltaTime);
           position.add(velocity.x,0);
           moveSpeed-=20;          
         }
@@ -105,7 +103,7 @@ class Player
         {
           if(moveSpeed > 0 && !isTouching)
           {
-            velocity.mult(moveSpeed * deltaTime);
+            velocity.x = velocity.x*(moveSpeed * deltaTime);
             position.add(velocity.x,0);
             moveSpeed-=4; 
           }
@@ -119,7 +117,6 @@ boolean collisionCheck(){
   if(position.x<=0+size/2)
   {
     position.x = 0+size/2;
-    moveSpeed = 300f;
     jumpAble = true;
   }
   else
@@ -129,7 +126,6 @@ boolean collisionCheck(){
   if(position.x>=width-size/2)
   {
     position.x = width-size/2;
-    moveSpeed = 300f;
     jumpAble = true;
   }
   else
