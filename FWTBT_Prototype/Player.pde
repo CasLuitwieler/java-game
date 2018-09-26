@@ -11,7 +11,7 @@ class Player
   private float maxSpeed;
   //------Other-------
   private boolean isUp, isDown, isLeft, isRight, isSpace,lastDirection,jumpAble,jumpAble2,jumped;
-  private boolean isTouching,isTouchingL,isTouchingR;
+  private boolean isTouching,isTouching2,isTouchingL,isTouchingR;
   private int jumps;
   Player(int size)
   {
@@ -36,7 +36,8 @@ class Player
   
   void HandleInput()
   {
-    if(isTouching && isUp)jumpSpeed = 500f;
+
+    if((isTouching || isTouching2) && isUp)jumpSpeed = 500f;
     if((jumpAble || jumpAble2) && isUp && !jumped)
     {
       jumpSpeed = 500f;
@@ -44,8 +45,8 @@ class Player
       if(lastDirection)isLeft = false;
       else isRight = false;
       lastDirection = !lastDirection;
-      if(jumpAble)jumpAble = false;
-      else jumpAble2 = false;
+      jumpAble = false;
+      jumpAble2 = false;
       isUp = false;
       jumped = true;
     }
@@ -58,7 +59,7 @@ class Player
     }
     else
     {
-      if(!isTouching)
+      if((!isTouching || !isTouching2))
       {
         velocity.y = velocity.y*(jumpSpeed * deltaTime);
         position.add(0,-velocity.y);
@@ -89,7 +90,7 @@ class Player
         }
         else
         {
-          if(moveSpeed > 0 && !isTouching)
+          if(moveSpeed > 0 && !isTouching && !isTouching2)
           {
             velocity.x = velocity.x*(moveSpeed * deltaTime);
             position.add(-velocity.x,0);
@@ -118,7 +119,7 @@ class Player
         }
         else
         {
-          if(moveSpeed > 0 && !isTouching)
+          if(moveSpeed > 0 && !isTouching  && !isTouching2)
           {
             velocity.x = velocity.x*(moveSpeed * deltaTime);
             position.add(velocity.x,0);
@@ -140,7 +141,7 @@ class Player
       jumpAble = true;
     }
     
-    else if(!(position.x>=width-size/2))jumpAble = false;
+    else if(!(position.x>=width-size/2) && !(isTouchingR || isTouchingL)){print("ok");jumpAble = false;}
     
     if(position.x>=width-size/2)
     {
@@ -155,11 +156,21 @@ class Player
     //------Color check------
     int x =(int) position.x;
     int y =(int) position.y;
-    if(map.get(x + size/2,y) == color(0)){isTouchingR = true;position.x -= 4;moveSpeed =0;jumpAble2 = true;}else {isTouchingR = false;}
-    if(map.get(x - size/2,y) == color(0)){isTouchingL = true;position.x += 4;moveSpeed =0;jumpAble2 = true;}else {isTouchingL = false;}
-    if(map.get(x, y + size/2) == color(0)){isTouching = true;jumpSpeed = 0;position.x -= 5;}
-    if(map.get(x, y - size/2) == color(0))jumpSpeed = 0;
+    isTouching2 = false;
+    jumpAble2 = false;
+    for(int i = 0; i < size/2;i++)
+    {
+      if(map.get(x + size/2,y+(i-size/4)) == color(0)){isTouchingR = true;position.x -= 0.1;moveSpeed =0;jumpAble2 = true;}else {isTouchingR = false;}
+      if(map.get(x - size/2,y+(i-size/4)) == color(0)){isTouchingL = true;position.x += 0.1;moveSpeed =0;jumpAble2 = true;}else {isTouchingL = false;}
+    }
+    for(int i = 0; i < size/2;i++)
+    {  
+    if(map.get(x+(i-size/4), y + size/2) == color(0)){isTouching2 = true;jumpSpeed = 0;}
+    }
     
+    if(map.get(x, y - size/2) == color(0)){jumpSpeed = 0;position.y++;}
+    color c = map.get(x, y + size/2);
+    println(c);
   }
 
   void Draw()
@@ -167,7 +178,7 @@ class Player
     pushMatrix();
     translate(position.x, position.y);
     fill(playerColor);
-    ellipse(0, 0, size, size);
+    rect(0, 0, size, size);
     image(img,0,0,size,size);
     popMatrix();
   }
