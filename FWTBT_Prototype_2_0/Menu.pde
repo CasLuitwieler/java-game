@@ -105,10 +105,10 @@ class Menu
     }
     if(isSpace)
     {
+      println(object[currentSel].text);
       if(object[currentSel].text == "Exit")exit();
       if(object[currentSel].text == "Options"){object[currentSel].selected = false;currentSel = 0;createOptions();object[currentSel].selected = true;}
       if(object[currentSel].text == "Back"){object[currentSel].selected = false;currentSel = 0;createMainMenu();object[currentSel].selected = true;}
-      println(object[currentSel].text);
       isSpace = false;
     }
     //------End of input handling------
